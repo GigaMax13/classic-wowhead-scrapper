@@ -7,16 +7,16 @@ export interface IItemDTO {
   icon: string
 }
 
-export class Item {
+export class ItemTooltip {
   readonly id: string
 
   tooltip: string
   quality: number
-  entity: number
+  entity: string
   name: string
   icon: string
 
-  constructor(props: Omit<Item, 'id'>) {
+  constructor(props: Omit<ItemTooltip, 'id'>) {
     Object.assign(this, props)
 
     if (!this.id) {

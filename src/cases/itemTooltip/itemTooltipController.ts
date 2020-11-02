@@ -1,5 +1,5 @@
 import { ItemTooltipUseCase } from './itemTooltipUseCase'
-import { ScrapperController } from '../../base/ScrapperController'
+import { ScrapperController } from '../../base/scrapperController'
 
 export class ItemTooltipController extends ScrapperController {
   constructor(private itemTooltipUseCase: ItemTooltipUseCase) {
