@@ -3,10 +3,24 @@
     "target": "es2017",
     "module": "commonjs",
     "allowJs": true,
-    "outDir": "build",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    "paths": {
+      "@cases/*": ["./src/cases/*"],
+      "@classes/*": ["./src/classes/*"],
+      "@config/*": ["./src/config/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@repositories/*": ["./src/repositories/*"]
+    }
   },
   "include": [
     "src/**/*.ts"

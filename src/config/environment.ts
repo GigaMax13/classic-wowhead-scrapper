@@ -23,5 +23,5 @@ config({ path })
  */
 
 export const {
-  env: { BODY_LIMIT, PORT, DB_NAME, DB_USER, DB_PASS }
+  env: { BODY_LIMIT, PORT, DB_URL, DB_NAME, DB_USER, DB_PASS }
 } = process

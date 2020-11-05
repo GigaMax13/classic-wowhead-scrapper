@@ -7,7 +7,7 @@ export interface IItemDTO {
   icon: string
 }
 
-export class ItemTooltip {
+export class TooltipItem {
   readonly id: string
 
   tooltip: string
@@ -16,7 +16,7 @@ export class ItemTooltip {
   name: string
   icon: string
 
-  constructor(props: Omit<ItemTooltip, 'id'>) {
+  constructor(props: Omit<TooltipItem, 'id'>) {
     Object.assign(this, props)
 
     if (!this.id) {
