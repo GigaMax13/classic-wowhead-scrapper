@@ -41,8 +41,10 @@ export class TooltipItemUseCase {
           )
         }
       } catch (e) {
-        if (!e.response || e.response.status !== 404) {
+        if (!e?.response?.status) {
           console.error(e)
+        } else if (e?.response?.status !== 404) {
+          console.log(maskedEntity, e.message)
         }
       }
     }

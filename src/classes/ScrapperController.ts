@@ -10,7 +10,7 @@ interface ILinearIterateThroughPages {
   delay?: number
 }
 export class ScrapperController {
-  constructor(protected name?: string) {}
+  constructor(private scraperName?: string) {}
 
   protected sequentialQueue(data: ISequentialQueue): number[] {
     const { isMinLimitIncluded, min = 0, max } = data
@@ -43,5 +43,9 @@ export class ScrapperController {
         delay
       )
     })
+  }
+
+  protected get name(): string {
+    return this.scraperName
   }
 }

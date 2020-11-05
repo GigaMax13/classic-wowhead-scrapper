@@ -7,19 +7,20 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "rootDir": "./src",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"
     ],
     "paths": {
-      "@cases/*": ["./src/cases/*"],
-      "@classes/*": ["./src/classes/*"],
-      "@config/*": ["./src/config/*"],
-      "@entities/*": ["./src/entities/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@providers/*": ["./src/providers/*"],
-      "@repositories/*": ["./src/repositories/*"]
+      "@api/*": ["cases/api/*"],
+      "@scraper/*": ["cases/scraper/*"],
+      "@classes/*": ["classes/*"],
+      "@config/*": ["config/*"],
+      "@entities/*": ["entities/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@providers/*": ["providers/implementations/*", "providers/*"],
+      "@repositories/*": ["repositories/implementations/*", "repositories/*"]
     }
   },
   "include": [

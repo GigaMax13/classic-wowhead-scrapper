@@ -1,15 +1,15 @@
 import { Request, Response } from 'express'
 
-import { ScrapperController } from '@classes/scrapperController'
-import { TooltipItemUseCase } from './TooltipItemUseCase'
 import { CacheKey, ICacheProvider } from '@providers/ICacheProvider'
+import { ScrapperController } from '@classes/ScrapperController'
+import { TooltipItemUseCase } from './TooltipItemUseCase'
 
 export class TooltipItemController extends ScrapperController {
   constructor(
     private tooltipItemUseCase: TooltipItemUseCase,
     private cacheProvider: ICacheProvider
   ) {
-    super('items-tooltip')
+    super('tooltip-item')
   }
 
   handle = async (
@@ -32,8 +32,8 @@ export class TooltipItemController extends ScrapperController {
     // known limit [35, 23075] -> [0, max]
     const queue = this.sequentialQueue({
       isMinLimitIncluded: true,
-      max: Number(max) || 23075,
-      min: Number(min) || 35
+      max: Number(max) || 30000,
+      min: Number(min) || 1
     })
 
     this.linearIterateWithDelay({

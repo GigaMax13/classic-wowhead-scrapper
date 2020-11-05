@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 import compression from 'compression'
 
 import { BODY_LIMIT } from '@config/environment'
-import { Routes } from './routes'
+import { ScraperRoutes } from '@scraper/routes'
 
 const app = express()
 
@@ -27,7 +27,7 @@ app.get(['/', '/status'], (req, res) => {
   })
 })
 
-app.use(Routes)
+app.use('/scraper', ScraperRoutes)
 
 app.all('*', (req, res) => {
   res.status(404).send({
