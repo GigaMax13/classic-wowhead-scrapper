@@ -1,22 +1,20 @@
 import { v4 } from 'uuid'
 
-export interface ITooltipItemDTO {
+export interface ITooltipItemSetDTO {
   tooltip: string
-  quality: number
   name: string
   icon: string
 }
 
-export class TooltipItem {
+export class TooltipItemSet {
   readonly id: string
 
   tooltip: string
-  quality: number
   entity: number
   name: string
   icon: string
 
-  constructor(props: Omit<TooltipItem, 'id'>) {
+  constructor(props: Omit<TooltipItemSet, 'id'>) {
     Object.assign(this, props)
 
     if (!this.id) {

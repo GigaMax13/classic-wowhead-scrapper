@@ -1,13 +1,12 @@
 import { Document, Schema, model } from 'mongoose'
 
 import { IScrapedEntityRepository } from '../IScrapedEntityRepository'
-import { TooltipItem } from '@entities/TooltipItem'
+import { TooltipItemSet } from '@entities/TooltipItemSet'
 
 import '@config/database'
 
 interface TooltipItemDocument extends Document {
   tooltip: string
-  quality: number
   entity: number
   name: string
   icon: string
@@ -18,7 +17,6 @@ interface TooltipItemDocument extends Document {
 const TooltipItemSchema: Schema = new Schema({
   entity: { type: Number, unique: true },
   tooltip: String,
-  quality: Number,
   name: String,
   icon: String,
   _id: String
@@ -27,12 +25,11 @@ const TooltipItemSchema: Schema = new Schema({
 TooltipItemSchema.index({ entity: 1 })
 TooltipItemSchema.index({ name: 1 })
 
-TooltipItemSchema.methods.toJSON = function (): TooltipItem {
-  const { tooltip, quality, entity, name, icon, _id: id } = this.toObject()
+TooltipItemSchema.methods.toJSON = function (): TooltipItemSet {
+  const { tooltip, entity, name, icon, _id: id } = this.toObject()
 
   return {
     tooltip,
-    quality,
     entity,
     name,
     icon,
@@ -41,18 +38,18 @@ TooltipItemSchema.methods.toJSON = function (): TooltipItem {
 }
 
 const TooltipItemModel = model<TooltipItemDocument>(
-  'tooltip-item',
+  'tooltip-item-set',
   TooltipItemSchema
 )
 
-export class TooltipItemRepository
-  implements IScrapedEntityRepository<TooltipItem> {
-  async findByEntity(entity: number): Promise<TooltipItem | void> {
+export class TooltipItemSetRepository
+  implements IScrapedEntityRepository<TooltipItemSet> {
+  async findByEntity(entity: number): Promise<TooltipItemSet | void> {
     try {
       const item = await TooltipItemModel.findOne({ entity }).exec()
 
       if (item) {
-        return Promise.resolve(new TooltipItem(item.toJSON()))
+        return Promise.resolve(new TooltipItemSet(item.toJSON()))
       } else {
         return Promise.resolve()
       }
@@ -61,7 +58,7 @@ export class TooltipItemRepository
     }
   }
 
-  async save({ id: _id, ...props }: TooltipItem): Promise<void> {
+  async save({ id: _id, ...props }: TooltipItemSet): Promise<void> {
     try {
       await TooltipItemModel.create({
         ...props,

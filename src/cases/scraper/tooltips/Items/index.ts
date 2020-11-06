@@ -2,12 +2,12 @@ import { TooltipItemRepository } from '@repositories/TooltipItemRepository'
 import { RouteSchemaValidator } from '@middlewares/RouteSchemaValidator'
 import { Cache } from '@providers/CacheProvider'
 
-import { TooltipItemController as Controller } from './TooltipItemController'
-import { TooltipItemSchema as Schema } from './TooltipItemSchema'
-import { TooltipItemUseCase } from './TooltipItemUseCase'
+import { ItemsController as Controller } from './itemsController'
+import { ItemsSchema as Schema } from './itemsSchema'
+import { ItemsUseCase } from './itemsUseCase'
 
 const tooltipItemRepository = new TooltipItemRepository()
-const tooltipItemUseCase = new TooltipItemUseCase(tooltipItemRepository, Cache)
+const tooltipItemUseCase = new ItemsUseCase(tooltipItemRepository, Cache)
 
 export const TooltipItemSchema = RouteSchemaValidator.validate(Schema)
 
